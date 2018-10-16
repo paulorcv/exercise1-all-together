@@ -12,31 +12,39 @@ React and prepare you for your first project.
 The instructions for this project are located in the `instructions.md` file.
 */
 
-const users = [
-  {
-    username: 'paulorcv',
-    firstName: 'Paulo',
-    lastName: 'Campos',
-    numberOfGames: 1
-  },
-  {
-    username: 'tatuzim',
-    firstName: 'Tatu',
-    lastName: 'Bolinha',
-    numberOfGames: 1
-  },
-  {
-    username: 'tonim',
-    firstName: 'Antonio',
-    lastName: 'Carlos',
-    numberOfGames: 2
-  },
-
-];
-
-
-
 class App extends Component {
+
+  state = {
+    users: [
+      {
+        username: 'paulorcv',
+        firstName: 'Paulo',
+        lastName: 'Campos',
+        numberOfGames: 1
+      },
+      {
+        username: 'tatuzim',
+        firstName: 'Tatu',
+        lastName: 'Bolinha',
+        numberOfGames: 1
+      },
+      {
+        username: 'tonim',
+        firstName: 'Antonio',
+        lastName: 'Carlos',
+        numberOfGames: 2
+      },
+    
+    ]
+  }
+
+  addUser = user => {
+    this.setState(oldState => ({
+      users: [...oldState.users, user],
+    }));
+  }; 
+
+
   render() {
     return (
       <div className="App">
@@ -44,8 +52,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <FormUser />
-        <UsersGames users={users} />
+        <FormUser addUser={this.addUser}/>
+        <UsersGames users={this.state.users} />
 
       </div>
     );

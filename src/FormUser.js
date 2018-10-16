@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 
 class FormUser extends Component{
-    
+
     state = {
         user: {
             firstName: '',
             lastName: '',
             username: '',
           },
+          buttonDisabled: true
     }
 
     constructor(props){
@@ -19,7 +20,8 @@ class FormUser extends Component{
         this.setState({
             user: {
                 [name]: value
-            }
+            },
+            buttonDisabled: this.isAnyInputEmpty()
         }
         );
 
@@ -33,34 +35,31 @@ class FormUser extends Component{
     }
 
     render(){
-
-        const user = this.state.user;
-
         return(
             <div className='FormUser'>
             <p>
             <input type='text'
                    placeholder='Enter username...'
                    name='username'
-                   value={user.userName}
+                   value={this.state.user.userName}
                    onChange={this.handleInput} />
             </p>
             <p>
             <input type='text'
                    placeholder='Enter First Name...'
                    name='firstName'
-                   value={user.firstName}
+                   value={this.state.user.firstName}
                    onChange={this.handleInput} />
             </p>      
             <p>
             <input type='text'
                    placeholder='Enter Last Name...'
                    name='lastName'
-                   value={user.lastName}
+                   value={this.state.user.lastName}
                    onChange={this.handleInput} />
             </p>              
             <p>
-              <button disabled={this.isAnyInputEmpty()}>ADD</button>
+              <button disabled={this.state.buttonDisabled} onClick={this.props.addUser(this.state.user)}>ADD</button>
             </p>
           </div>
   
