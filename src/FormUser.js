@@ -8,7 +8,6 @@ class FormUser extends Component{
             lastName: '',
             username: '',
           },
-          buttonDisabled: true
     }
 
     constructor(props){
@@ -18,16 +17,16 @@ class FormUser extends Component{
     }
 
     handleInput = event => {
-        const { name, value} = event.target;
-        this.setState({
-            user: {
-                [name]: value
-            },
-            buttonDisabled: this.isAnyInputEmpty()
-        }
-        );
+        const { name, value } = event.target;
 
-    }
+        this.setState(currState => ({
+          ...currState,
+          user: {
+            ...currState.user,
+            [name]: value,
+          },
+        }));
+      };
 
     isAnyInputEmpty = () => {
         return  this.state.user.username === '' ||
@@ -36,7 +35,7 @@ class FormUser extends Component{
 
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = event => {
         event.preventDefault();
         const user = this.state.user;
         this.props.addUser(user);
@@ -71,7 +70,7 @@ class FormUser extends Component{
                    onChange={this.handleInput} />
             </p>              
             <p>
-              <input type='submit' disabled={this.state.buttonDisabled} value='ADD' />
+             <button disabled={this.isAnyInputEmpty()}>Add</button>
             </p>
             </form>
         </div>

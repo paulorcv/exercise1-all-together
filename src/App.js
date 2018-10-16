@@ -44,10 +44,14 @@ class App extends Component {
   }
 
   addUser = user => {
-    this.setState(oldState => ({
-      users: [...oldState.users, user],
+    console.log('--Add User---');
+    console.log(user);
+    user.numberOfGames = 0;
+    this.setState(currState => ({
+      users: [...currState.users, user],
     }));
   }; 
+
 
 
   render() {

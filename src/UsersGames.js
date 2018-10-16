@@ -5,7 +5,6 @@ class UsersGames extends Component{
 
     constructor(props){
         super(props);
-        this.users = props.users;
         this.hide = false;
     }
 
@@ -14,7 +13,7 @@ class UsersGames extends Component{
             <div className='UsersGamesList'>
             <h2>Users</h2>
             <ol>
-              {this.users.map(user=>(
+              {this.props.users.map(user=>(
                 <li key={user.username}><b>{user.username}</b> has played 0 games</li>
               ))}
               
