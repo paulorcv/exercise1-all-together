@@ -34,12 +34,7 @@ const users = [
 
 ];
 
-const user = {
-  userName: 'amorinha',
-  firstName: 'Amora',
-  lastName: 'Maria',
-  numberOfGames: 0
-}
+
 
 class App extends Component {
   render() {
@@ -49,7 +44,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <FormUser user={user} />
+        <FormUser />
         <UsersGames users={users} />
 
       </div>
