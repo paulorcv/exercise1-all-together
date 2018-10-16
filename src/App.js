@@ -38,6 +38,11 @@ class App extends Component {
     ]
   }
 
+  constructor(props){
+    super(props);
+    this.addUser = this.addUser.bind(this);
+  }
+
   addUser = user => {
     this.setState(oldState => ({
       users: [...oldState.users, user],

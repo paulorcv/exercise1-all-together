@@ -13,6 +13,8 @@ class FormUser extends Component{
 
     constructor(props){
         super(props);
+        this.handleInput = this.handleInput.bind(this);
+
     }
 
     handleInput = event => {
@@ -34,10 +36,20 @@ class FormUser extends Component{
 
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const user = this.state.user;
+        this.props.addUser(user);
+
+    }
+
     render(){
         return(
-            <div className='FormUser'>
+        <div className='FormUser'>
+            <form onSubmit={this.handleSubmit}>
             <p>
+            
+          
             <input type='text'
                    placeholder='Enter username...'
                    name='username'
@@ -59,9 +71,10 @@ class FormUser extends Component{
                    onChange={this.handleInput} />
             </p>              
             <p>
-              <button disabled={this.state.buttonDisabled} onClick={this.props.addUser(this.state.user)}>ADD</button>
+              <input type='submit' disabled={this.state.buttonDisabled} value='ADD' />
             </p>
-          </div>
+            </form>
+        </div>
   
         )
     }
