@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ButtonHideGames from './ButtonHideGames';
+import PropTypes from 'prop-types'
+
 
 class UsersGames extends Component{
 
@@ -7,6 +9,10 @@ class UsersGames extends Component{
         super(props);
         this.hide = false;
     }
+
+    static propTypes = {
+        users: PropTypes.array.isRequired,
+      }
 
     render(){
         return(            

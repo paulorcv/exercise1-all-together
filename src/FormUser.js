@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+
 
 class FormUser extends Component{
 
@@ -9,6 +11,10 @@ class FormUser extends Component{
             username: '',
           },
     }
+
+    static propTypes = {
+        addUser: PropTypes.func.isRequired,
+      }
 
     constructor(props){
         super(props);

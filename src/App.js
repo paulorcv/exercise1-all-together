@@ -25,9 +25,7 @@ class App extends Component {
   }
 
   addUser = user => {
-    console.log('--Add User---');
-    console.log(user);
-
+    
     if( this.existsUser(user)){
       this.setState({
          msg:  user.username + ' already exists!' 
