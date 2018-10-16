@@ -5,6 +5,11 @@ import PropTypes from 'prop-types'
 
 class UsersGames extends Component{
 
+    constructor(props){
+        super(props);
+        this.toggleHide = this.toggleHide.bind(this);
+    }
+    
     state = {
         hide: true
     }
@@ -13,16 +18,22 @@ class UsersGames extends Component{
         users: PropTypes.array.isRequired,
       }
 
+    toggleHide = () => {
+        this.setState((currentState) => ({
+            hide: !currentState.hide
+          }));
+    }  
+
     render(){
         return(            
             <div className='UsersGamesList'>
             <h2>Users</h2>
             <ol>
               {this.props.users.map(user=>(
-                <li key={user.username}><b>{user.username}</b> has played {this.hide? '0' : user.numberOfGames} games</li>
+                <li key={user.username}><b>{user.username}</b> has played {this.state.hide? '0' : user.numberOfGames} games</li>
               ))}
             </ol>  
-            <p><ButtonHideGames hide={this.state.hide} /></p>
+            <p><ButtonHideGames hide={this.state.hide} toggleHide={this.toggleHide} /></p>
           </div>            
         )
     }
