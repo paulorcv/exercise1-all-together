@@ -15,27 +15,8 @@ The instructions for this project are located in the `instructions.md` file.
 class App extends Component {
 
   state = {
-    users: [
-      {
-        username: 'paulorcv',
-        firstName: 'Paulo',
-        lastName: 'Campos',
-        numberOfGames: 1
-      },
-      {
-        username: 'tatuzim',
-        firstName: 'Tatu',
-        lastName: 'Bolinha',
-        numberOfGames: 1
-      },
-      {
-        username: 'tonim',
-        firstName: 'Antonio',
-        lastName: 'Carlos',
-        numberOfGames: 2
-      },
-    
-    ]
+    users: [],
+    msg: ''
   }
 
   constructor(props){
@@ -46,11 +27,29 @@ class App extends Component {
   addUser = user => {
     console.log('--Add User---');
     console.log(user);
-    user.numberOfGames = 0;
-    this.setState(currState => ({
-      users: [...currState.users, user],
-    }));
+
+    if( this.existsUser(user)){
+      this.setState({
+         msg:  user.username + ' already exists!' 
+      });
+    }else{
+
+      user.numberOfGames = 0;
+      this.setState(currState => ({
+        users: [...currState.users, user],
+        msg: user.username + ' added!'
+      }));
+    }
   }; 
+
+  existsUser = currentUser => {
+
+    for(let user of this.state.users){
+      if(currentUser.username.toLowerCase() === user.username.toLowerCase())
+        return true;
+    }
+        return false;
+  }
 
 
 
@@ -62,6 +61,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <FormUser addUser={this.addUser}/>
+        <p><strong>{this.state.msg}</strong></p>
         <UsersGames users={this.state.users} />
 
       </div>
