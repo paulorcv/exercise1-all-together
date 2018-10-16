@@ -9,6 +9,7 @@ class FormUser extends Component{
             firstName: '',
             lastName: '',
             username: '',
+            numberOfGames: 0
           },
     }
 

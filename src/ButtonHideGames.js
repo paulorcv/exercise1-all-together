@@ -6,7 +6,6 @@ function ButtonHideGames(props){
         <button>
         {hide? 'Hide the Number of Games Played' : 'Show the Number of Games Played'}
         </button>
-    
     )
 }
 

@@ -25,14 +25,14 @@ class App extends Component {
   }
 
   addUser = user => {
-    
+
     if( this.existsUser(user)){
       this.setState({
          msg:  user.username + ' already exists!' 
       });
     }else{
-
-      user.numberOfGames = 0;
+      // gerar o número de games aleatoriamente  
+      user.numberOfGames = Math.floor(Math.random() * 100);
       this.setState(currState => ({
         users: [...currState.users, user],
         msg: user.username + ' added!'
